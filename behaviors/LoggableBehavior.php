@@ -99,7 +99,7 @@ class LoggableBehavior extends CActiveRecordBehavior{
 		$log->model_id	= $this->getNormalizedPk();
 		$log->field		= $name;
 		$log->stamp		= $this->storeTimestamp ? time() : date($this->dateFormat); // If we are storing a timestamp lets get one else lets get the date
-		$log->user_id	= Yii::app()->user->id; // Lets get the user id
+		$log->user_id	= $this->getUserId(); // Lets get the user id
 		return $log->save();
 	}
 
